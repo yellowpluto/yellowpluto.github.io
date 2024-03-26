@@ -53,7 +53,7 @@
     "href": "index.html",
     "title": "Title Here",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is a Quarto website.\ntest\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "blog/index.html",
