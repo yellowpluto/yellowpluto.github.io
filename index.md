@@ -1,7 +1,8 @@
 ---
-title: "Title Here"
+title: Kevin's Website
 ---
 
-This is a Quarto website.
+This is a Quarto website. The source code can be found here:
+[https://github.com/moonpiedumplings/blog-template](https://github.com/moonpiedumplings/blog-template)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Thanks Jeffrey
