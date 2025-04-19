@@ -7,7 +7,7 @@ listing:
   # type: table # See 
   categories: true
   sort-ui: true  
-  filter-ui: false
+  filter-ui: true
 page-layout: full
 title-block-banner: true
 ---
