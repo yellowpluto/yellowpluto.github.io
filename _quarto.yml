@@ -7,10 +7,12 @@ website:
     left:
       - href: index.md
         text: Home
-      - href: info/index.md
-        text: Info
+      - href: layer8/index.md
+        text: Layer 8
       - href: resume/index.md
         text: Resume
+      - href: info/index.md
+        text: Info
 
 format:
   html:
