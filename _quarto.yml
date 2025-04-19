@@ -7,8 +7,8 @@ website:
     left:
       - href: index.md
         text: Home
-      - href: blog/index.md
-        text: Blog
+      - href: info/index.md
+        text: Info
       - href: resume/index.md
         text: Resume
 

@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Info"
 listing:
   contents:
     - "*/index.*md"
