@@ -9,6 +9,8 @@ website:
         text: Home
       - href: blog/index.md
         text: Blog
+      - href: resume/index.md
+        text: Resume
 
 format:
   html:
