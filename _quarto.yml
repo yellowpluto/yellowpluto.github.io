@@ -17,7 +17,7 @@ format:
     theme:
       # See: https://quarto.org/docs/output-formats/html-themes.html
       light: solar
-      dark: solar
+      dark: cosmos
     css: styles.css
     toc: true
 
