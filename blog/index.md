@@ -6,8 +6,8 @@ listing:
   sort: "date desc"
   # type: table # See 
   categories: true
-  sort-ui: false  
-  filter-ui: true
+  sort-ui: true  
+  filter-ui: false
 page-layout: full
 title-block-banner: true
 ---
