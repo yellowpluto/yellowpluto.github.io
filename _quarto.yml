@@ -22,6 +22,7 @@ format:
       dark: solar
     css: styles.css
     toc: true
+    anchor-links: false
 
 
 
