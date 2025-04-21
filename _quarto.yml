@@ -18,8 +18,8 @@ format:
   html:
     theme:
       # See: https://quarto.org/docs/output-formats/html-themes.html
-      light: default
-      dark: solar
+      light: cerulean
+      dark: darkly
     css: styles.css
     toc: true
 
