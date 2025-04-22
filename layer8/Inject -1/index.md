@@ -1,5 +1,5 @@
 ---
-title: Inject 1
+title: Inject -1
 date: 2025-4-21
 description: Deploying Quarto
 categories: ['Inject']
