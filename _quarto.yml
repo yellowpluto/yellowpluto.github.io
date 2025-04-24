@@ -7,6 +7,8 @@ website:
     left:
       - href: index.md
         text: Home
+      - href: blog/index.md
+        text: Blog
       - href: layer8/index.md
         text: Layer 8
       - href: resume/index.md
