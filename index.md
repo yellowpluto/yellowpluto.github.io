@@ -10,6 +10,10 @@ I like to keep things simple and organized, so each directory is explained below
 
 Current directory.
 
+## [Blog](https://yellowpluto.github.io/blog/)
+
+Cool things outside my club I document.
+
 ## [Layer 8](https://yellowpluto.github.io/layer8/)
 
 Writeups and documentation for Layer 8. (the club I'm in)
