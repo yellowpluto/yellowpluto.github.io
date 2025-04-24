@@ -8,6 +8,10 @@
     ]
   },
   {
+    "listing": "/blog/index.html",
+    "items": []
+  },
+  {
     "listing": "/layer8/index.html",
     "items": [
       "/layer8/Inject -1/index.html"
