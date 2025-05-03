@@ -56,32 +56,11 @@
     "text": "Go to github.com and create an account\n\nYour site will be located at “username.github.io”\n\n\nGo to github.com/moonpiedumplings/blog-template and select “use template”\n\nThe repo name should be “username.github.io”\n\nmake sure to select “include all branches”\n\nin the github settings, make sure “gh-pages” is selected as the deploy\n\n\nSince I don’t use github often it took me a bit to find the “gh-pages” setting. I did some research and found it was under the “Pages” tab in the repository settings.\nAfter I got everything setup, I started toying around with the quarto.yml file and markdown. Using quarto and markdown makes the process of editing a website extremely intuitive (I don’t know web development). Once I figured out the structure of the website, I set up multiple directories like Layer 8 and my resume."
   },
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
+    "objectID": "info/qmd/index.html",
+    "href": "info/qmd/index.html",
+    "title": ".qmd and python jupyter blocks",
     "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "info/index.html",
-    "href": "info/index.html",
-    "title": "Info",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMarkdown formatting\n\n\n\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n.qmd and python jupyter blocks\n\n\n\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAbout Quarto\n\n\n\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "info/quarto/index.html",
-    "href": "info/quarto/index.html",
-    "title": "About Quarto",
-    "section": "",
-    "text": "Quarto is the static site generator used to render this site.\nIt’s documentation is very extensive, and worth reading.\nInteresting/Important bits:\nQuarto has a built in category system\nThis enables users to filter documents by types.\nTheming: https://quarto.org/docs/output-formats/html-themes.html\nAt the top right of this page, there is a toggle between light and dark theme. You can edit the _quarto.yml file to edit the themes used.\nPlugins/Extensions: https://quarto.org/docs/extensions/\nPlugins add functionality to quarto, like being able to embed QR Codes.\nWeb based slides: https://quarto.org/docs/presentations/revealjs/\nI used Reveal JS slides for the presentation\nUnder the hood, Quarto uses Pandoc and supports all of it’s features."
-  },
-  {
-    "objectID": "resume/index.html",
-    "href": "resume/index.html",
-    "title": "Resume",
-    "section": "",
-    "text": "todo later"
+    "text": "What are qmd files?\n.qmd files are files special to quarto. The short version of it is that quarto renders these files, which are essentially markdown files, to jupyter notebooks, where it then executes and renders any python code.\n\n\nExamples\n\nprint(\"Hello World!\")\n\nprint(3 + 2)\n\nHello World!\n5\n\n\nQuarto is designed for data science, and this means having executable code blocks that do something. For example, Quarto can use matplotlib in python to plot things.\nWhere things get interesting is the combination of three factors:\n\nThe output of these code blocks can be done as plain text, rather than a code block, by putting #| output: asis at the beginning of the code block.\nThe plain text output by these code blocks, is done before the markdown is rendered to other formats.\nIt’s possible to hide the code blocks but not the output, by putting #| echo: false at the beginning of the code block itself\n\nWhat this means, is that python can essentially act as a formatting engine, for generating dynamic content. Even things like using.\n#| output: asis\n#| echo: false\n\ndef make_bullets(list):\n  bulletlist = f''''''\n  for i in list:\n    bulletlist = bulletlist + \"* \"\n    bulletlist = bulletlist + i\n    bulletlist = bulletlist + \"\\n\"\n  print(bulletlist)\n\nsample_list = [\n  \"Item 1\",\n  \"Item 2\",\n  \"Item 3\"\n]\n\nmake_bullets(sample_list)\nWhich renders to:\n\nItem 1\nItem 2\nItem 3\n\nIt should be noted that I am actually using two code blocks here, one which does not execute, and does not hide itself, and another which executes and hides itself.\nYou can get even more dynamic content, if you use something like python requests to pull it as you render the site. Again, it is a bit hacky since backticks would render into a code block, so here I multiply one backticks times 3 to get a string containing 3 backticks, but it does work.\n#| output: asis\n#| echo: false\n\nimport requests\nbackticks = \"`\" * 3\n\nprint(f'''\n\n{backticks}{{.nix .code-overflow-wrap filename=home.nix}}\n{requests.get('https://raw.githubusercontent.com/ErikMcClure/bad-licenses/3c26bef3028fa8470308c493af7d7eae152a19ba/overwatch').text}\n{backticks}\n\n''')\n\n\nhome.nix\n\n                     Overwatch License Revision 2\n                          (c) Author, year\n\n\nPermission is hereby granted, free of charge, for anyone to use, distribute, or\nsell the compiled binaries, source code, and documentation (the \"Software\")\nwithout attribution.\n\nPermission to modify the Software is only granted to those that have a higher\ncompetitive matchmaking rank than the copyright holder in Overwatch 2\n(Blizzard, 2022).\n\nThe Software is provided in the hope that some will find it useful, but the\nSoftware comes under NO WARRANTY, EXPRESS OR IMPLIED, and the authors of the\nSoftware are NOT LIABLE IN THE EVENT OF LOSSES, DAMAGES OR MISUSE relating to\nthe Software."
   },
   {
     "objectID": "info/markdown/index.html",
@@ -133,17 +112,59 @@
     "text": "Code Blocks\nIt’s possible to do code blocks with langauge highlighting.\nThis:\n\\`\\`\\`{.python}\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\n\\`\\`\\`\nResults in:\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\nMany, many languages are supported and can be highlighted.\nImages:\n![alt text](https://quarto.org/quarto.png)\n\n\n\nalt text\n\n\nOf course, this is an external image. You an also store images in the repository, and then refer to them by the relative file path. Something like:\n![](../image.png)\nWhere .. goes up one directory, and then you can refer to files by their file path.\nMore information about markdown: https://quarto.org/docs/authoring/markdown-basics.html"
   },
   {
-    "objectID": "info/qmd/index.html",
-    "href": "info/qmd/index.html",
-    "title": ".qmd and python jupyter blocks",
+    "objectID": "resume/index.html",
+    "href": "resume/index.html",
+    "title": "Resume",
     "section": "",
-    "text": "What are qmd files?\n.qmd files are files special to quarto. The short version of it is that quarto renders these files, which are essentially markdown files, to jupyter notebooks, where it then executes and renders any python code.\n\n\nExamples\n\nprint(\"Hello World!\")\n\nprint(3 + 2)\n\nHello World!\n5\n\n\nQuarto is designed for data science, and this means having executable code blocks that do something. For example, Quarto can use matplotlib in python to plot things.\nWhere things get interesting is the combination of three factors:\n\nThe output of these code blocks can be done as plain text, rather than a code block, by putting #| output: asis at the beginning of the code block.\nThe plain text output by these code blocks, is done before the markdown is rendered to other formats.\nIt’s possible to hide the code blocks but not the output, by putting #| echo: false at the beginning of the code block itself\n\nWhat this means, is that python can essentially act as a formatting engine, for generating dynamic content. Even things like using.\n#| output: asis\n#| echo: false\n\ndef make_bullets(list):\n  bulletlist = f''''''\n  for i in list:\n    bulletlist = bulletlist + \"* \"\n    bulletlist = bulletlist + i\n    bulletlist = bulletlist + \"\\n\"\n  print(bulletlist)\n\nsample_list = [\n  \"Item 1\",\n  \"Item 2\",\n  \"Item 3\"\n]\n\nmake_bullets(sample_list)\nWhich renders to:\n\nItem 1\nItem 2\nItem 3\n\nIt should be noted that I am actually using two code blocks here, one which does not execute, and does not hide itself, and another which executes and hides itself.\nYou can get even more dynamic content, if you use something like python requests to pull it as you render the site. Again, it is a bit hacky since backticks would render into a code block, so here I multiply one backticks times 3 to get a string containing 3 backticks, but it does work.\n#| output: asis\n#| echo: false\n\nimport requests\nbackticks = \"`\" * 3\n\nprint(f'''\n\n{backticks}{{.nix .code-overflow-wrap filename=home.nix}}\n{requests.get('https://raw.githubusercontent.com/ErikMcClure/bad-licenses/3c26bef3028fa8470308c493af7d7eae152a19ba/overwatch').text}\n{backticks}\n\n''')\n\n\nhome.nix\n\n                     Overwatch License Revision 2\n                          (c) Author, year\n\n\nPermission is hereby granted, free of charge, for anyone to use, distribute, or\nsell the compiled binaries, source code, and documentation (the \"Software\")\nwithout attribution.\n\nPermission to modify the Software is only granted to those that have a higher\ncompetitive matchmaking rank than the copyright holder in Overwatch 2\n(Blizzard, 2022).\n\nThe Software is provided in the hope that some will find it useful, but the\nSoftware comes under NO WARRANTY, EXPRESS OR IMPLIED, and the authors of the\nSoftware are NOT LIABLE IN THE EVENT OF LOSSES, DAMAGES OR MISUSE relating to\nthe Software."
+    "text": "todo later"
+  },
+  {
+    "objectID": "info/quarto/index.html",
+    "href": "info/quarto/index.html",
+    "title": "About Quarto",
+    "section": "",
+    "text": "Quarto is the static site generator used to render this site.\nIt’s documentation is very extensive, and worth reading.\nInteresting/Important bits:\nQuarto has a built in category system\nThis enables users to filter documents by types.\nTheming: https://quarto.org/docs/output-formats/html-themes.html\nAt the top right of this page, there is a toggle between light and dark theme. You can edit the _quarto.yml file to edit the themes used.\nPlugins/Extensions: https://quarto.org/docs/extensions/\nPlugins add functionality to quarto, like being able to embed QR Codes.\nWeb based slides: https://quarto.org/docs/presentations/revealjs/\nI used Reveal JS slides for the presentation\nUnder the hood, Quarto uses Pandoc and supports all of it’s features."
+  },
+  {
+    "objectID": "info/index.html",
+    "href": "info/index.html",
+    "title": "Info",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMarkdown formatting\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n.qmd and python jupyter blocks\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAbout Quarto\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "layer8/Inject 0/index.html",
+    "href": "layer8/Inject 0/index.html",
+    "title": "Inject 0",
+    "section": "",
+    "text": "Goal: Familiarize yourself with Incus.\n\n\nFor this week’s assignment, I was tasked to download certificates in order to use a hyperconverged infrastructure called Incus. Incus works similarly to other hypervisors I’ve used like ESXi. The idea behind these hypervisors is to provide an easy and centralized way to deploy virtual machines. The reason someone would want a virtual machine is because they provide a safe way to deploy services, software, and scripts. Doing this assignment took me XXX\n\n\n\n\n\n\n\nThings go smoothly at first, I generate the certificate and download the .pfx file given to us on Discord. Once these two files downloaded (.crt and .pfx respectively) I attempted step 2. Since the command contained a “$” symbol, I knew it was Bash, so I fired up WSL and entered the command. It said I had to install an Incus client, so I did. I typed the command again and it gave me an error about some service call daemon not being on, at this point I was confused. To stop myself from getting overwhelmed I did step 3, which went smoothly. I found out that skipping step 2 was not the play because nothing happened. Then I went into full troubleshooting mode, going through documentation and the internet. I found a command which would supposedly turn the service on (it didn’t work). I tried another command which would remote me into the server (it didn’t work). I started to get frustrated at this point so I turned to my Discord server and saw if anyone is having a similar issue. Turns out you can just double click the certificates and install them using a wizard 🙃. Once I did that, it led me to the Incus web UI.\nNext, I uploaded Windows Server 2019 as a custom ISO. When I tried creating a vm with it I couldn’t get it to work. Feeling frustrated once again, I consulted Jeffery. He sent me a guide on how to use distrobuilder. In order to use distrobuilder I needed a Linux distribution. First, I tried WSL, which didn’t work. I then tried installing Linux Mint on vmware, which got stuck installing for multiple hours so I gave up on that. I also ran into an issue with trying to install Ubuntu and Debian which wouldn’t install. About to give up hope, I attempted to install Kali Linux (yeah I know it’s meant for hacking). Kali Linux did work to my surprise and I proceeded to install distrobuilder. By the way, these are the commands I used from the guide.\nsudo snap install distrobuilder \\--classic\n\nsudo distrobuilder repack-windows \\--windows-arch=amd64 ~~Win11\\_23H2\\_English\\_x64v2.iso~~ (WINSRV22.iso)  ~~Win11\\_23H2\\_English\\_x64v2.incus.iso~~ (WINSRV22.incus.iso)\nWINSRV22 being the name of my ISO file\nWhen I tried to type the first command, it told me to install snap which I did. After installing snap I got distrobuilder to download. I then opened a terminal where my original ISO was (my usb). I inputted the second command which takes the original ISO and turns it into an ISO Incus can read. It said that sudo distrobuilder wasn’t a command. I got rid of the sudo command and it returned a statement which said I needed elevated privileges. After some troubleshooting through the internet and ChatGPT, I just had to run distrobuilder from its file location. Finally everything worked and the ISO started converting into an Incus ISO. Once I got the new ISO, I uploaded it to Incus which leads me directly into weekly assignment 1."
+  },
+  {
+    "objectID": "layer8/Inject 0/index.html#about",
+    "href": "layer8/Inject 0/index.html#about",
+    "title": "Inject 0",
+    "section": "",
+    "text": "For this week’s assignment, I was tasked to download certificates in order to use a hyperconverged infrastructure called Incus. Incus works similarly to other hypervisors I’ve used like ESXi. The idea behind these hypervisors is to provide an easy and centralized way to deploy virtual machines. The reason someone would want a virtual machine is because they provide a safe way to deploy services, software, and scripts. Doing this assignment took me XXX"
+  },
+  {
+    "objectID": "layer8/Inject 0/index.html#write-up",
+    "href": "layer8/Inject 0/index.html#write-up",
+    "title": "Inject 0",
+    "section": "",
+    "text": "Things go smoothly at first, I generate the certificate and download the .pfx file given to us on Discord. Once these two files downloaded (.crt and .pfx respectively) I attempted step 2. Since the command contained a “$” symbol, I knew it was Bash, so I fired up WSL and entered the command. It said I had to install an Incus client, so I did. I typed the command again and it gave me an error about some service call daemon not being on, at this point I was confused. To stop myself from getting overwhelmed I did step 3, which went smoothly. I found out that skipping step 2 was not the play because nothing happened. Then I went into full troubleshooting mode, going through documentation and the internet. I found a command which would supposedly turn the service on (it didn’t work). I tried another command which would remote me into the server (it didn’t work). I started to get frustrated at this point so I turned to my Discord server and saw if anyone is having a similar issue. Turns out you can just double click the certificates and install them using a wizard 🙃. Once I did that, it led me to the Incus web UI.\nNext, I uploaded Windows Server 2019 as a custom ISO. When I tried creating a vm with it I couldn’t get it to work. Feeling frustrated once again, I consulted Jeffery. He sent me a guide on how to use distrobuilder. In order to use distrobuilder I needed a Linux distribution. First, I tried WSL, which didn’t work. I then tried installing Linux Mint on vmware, which got stuck installing for multiple hours so I gave up on that. I also ran into an issue with trying to install Ubuntu and Debian which wouldn’t install. About to give up hope, I attempted to install Kali Linux (yeah I know it’s meant for hacking). Kali Linux did work to my surprise and I proceeded to install distrobuilder. By the way, these are the commands I used from the guide.\nsudo snap install distrobuilder \\--classic\n\nsudo distrobuilder repack-windows \\--windows-arch=amd64 ~~Win11\\_23H2\\_English\\_x64v2.iso~~ (WINSRV22.iso)  ~~Win11\\_23H2\\_English\\_x64v2.incus.iso~~ (WINSRV22.incus.iso)\nWINSRV22 being the name of my ISO file\nWhen I tried to type the first command, it told me to install snap which I did. After installing snap I got distrobuilder to download. I then opened a terminal where my original ISO was (my usb). I inputted the second command which takes the original ISO and turns it into an ISO Incus can read. It said that sudo distrobuilder wasn’t a command. I got rid of the sudo command and it returned a statement which said I needed elevated privileges. After some troubleshooting through the internet and ChatGPT, I just had to run distrobuilder from its file location. Finally everything worked and the ISO started converting into an Incus ISO. Once I got the new ISO, I uploaded it to Incus which leads me directly into weekly assignment 1."
   },
   {
     "objectID": "layer8/index.html",
     "href": "layer8/index.html",
     "title": "Layer 8",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nInject 0\n\n\n\n\n\n\nInject\n\n\n\nAccessing Incus\n\n\n\n\n\nApr 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject -1\n\n\n\n\n\n\nInject\n\n\n\nDeploying Quarto\n\n\n\n\n\nApr 21, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nInject 1\n\n\n\nInject\n\n\n\nSetting up AD on Server Core\n\n\n\n\n\nMay 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject 0\n\n\n\nInject\n\n\n\nAccessing Incus\n\n\n\n\n\nApr 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject -1\n\n\n\nInject\n\n\n\nDeploying Quarto\n\n\n\n\n\nApr 21, 2025\n\n\n\n\n\nNo matching items"
   }
 ]
