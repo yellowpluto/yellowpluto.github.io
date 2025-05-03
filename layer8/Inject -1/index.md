@@ -16,7 +16,7 @@ I used this guide: [https://moonpiedumplings.github.io/talks/self-site/](https:/
 
 The instructions for making the website are as follows:
 
-## **Setup**
+# **Setup**
 
 * Go to [github.com](https://github.com/) and create an account  
   * Your site will be located at “username.github.io”  

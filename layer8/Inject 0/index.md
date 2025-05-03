@@ -8,17 +8,17 @@ draft: false # Change to true to not render the post in on the website
 
 # **Weekly Assignment 0: Incus\!**
 
-**Goal:** Familiarize yourself with Incus.
+## **Goal:** Familiarize yourself with Incus.
 
-## **About**
+# **About**
 
 For this week's assignment, I was tasked to download [certificates](https://en.wikipedia.org/wiki/Public_key_certificate) in order to use a [hyperconverged infrastructure](https://en.wikipedia.org/wiki/Hyper-converged_infrastructure) called [Incus](https://linuxcontainers.org/incus/docs/main/). Incus works similarly to other [hypervisors](https://en.wikipedia.org/wiki/Hypervisor) I’ve used like [ESXi](https://en.wikipedia.org/wiki/VMware_ESXi). The idea behind these hypervisors is to provide an easy and centralized way to deploy [virtual machines](https://en.wikipedia.org/wiki/Virtual_machine). The reason someone would want a virtual machine is because they provide a safe way to deploy services, software, and scripts. Doing this assignment took me XXX
 
-## **Instructions**
+# **Instructions**
 
 ![][image1]
 
-## **Write-up**
+# **Write-up**
 
 Things go smoothly at first, I generate the certificate and download the [.pfx](https://en.wikipedia.org/wiki/PKCS_12) file given to us on Discord. Once these two files downloaded (.crt and .pfx respectively) I attempted step 2\. Since the command contained a “$” symbol, I knew it was [Bash](https://en.wikipedia.org/wiki/Bash_\(Unix_shell\)), so I fired up [WSL](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux) and entered the command. It said I had to install an Incus client, so I did. I typed the command again and it gave me an error about some service call [daemon](https://en.wikipedia.org/wiki/Daemon_\(computing\)) not being on, at this point I was confused. To stop myself from getting overwhelmed I did step 3, which went smoothly. I found out that skipping step 2 was not the play because nothing happened. Then I went into full troubleshooting mode, going through documentation and the internet. I found a command which would supposedly turn the service on (it didn’t work). I tried another command which would remote me into the server (it didn’t work). I started to get frustrated at this point so I turned to my Discord server and saw if anyone is having a similar issue. Turns out you can just double click the certificates and install them using a wizard 🙃. Once I did that, it led me to the Incus web UI.
 
