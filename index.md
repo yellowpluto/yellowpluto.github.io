@@ -12,7 +12,7 @@ Current directory.
 
 ## [Blog](https://yellowpluto.github.io/blog/)
 
-Cool things outside my club I document.
+Something I'm working on.
 
 ## [Layer 8](https://yellowpluto.github.io/layer8/)
 
