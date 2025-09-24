@@ -1,54 +1,5 @@
 [
   {
-    "objectID": "info/markdown/index.html",
-    "href": "info/markdown/index.html",
-    "title": "Markdown formatting",
-    "section": "",
-    "text": "Markdown is very simple, and many sites, like Reddit, Stackoverflow, or even Discord use some variation of markdown formatting.\nBelow is the Markdown from the presentation, copied and pasted here."
-  },
-  {
-    "objectID": "info/markdown/index.html#markdown",
-    "href": "info/markdown/index.html#markdown",
-    "title": "Markdown formatting",
-    "section": "Markdown",
-    "text": "Markdown\n\nMarkdown is markup language\nEnables users to render formatted documents from plaintext\nMost static site generators use markdown"
-  },
-  {
-    "objectID": "info/markdown/index.html#markdown-code-snippets",
-    "href": "info/markdown/index.html#markdown-code-snippets",
-    "title": "Markdown formatting",
-    "section": "Markdown Code Snippets",
-    "text": "Markdown Code Snippets\n\n`this is code snippets`\n\nThey result in unformated, monospace text:\n\nthis is code snippets"
-  },
-  {
-    "objectID": "info/markdown/index.html#markdown-basics",
-    "href": "info/markdown/index.html#markdown-basics",
-    "title": "Markdown formatting",
-    "section": "Markdown Basics",
-    "text": "Markdown Basics\n*italics* = italics\n**bold** = bold\n[linktext](example.com) = linktext"
-  },
-  {
-    "objectID": "info/markdown/index.html#more-markdwon-basics",
-    "href": "info/markdown/index.html#more-markdwon-basics",
-    "title": "Markdown formatting",
-    "section": "More Markdwon Basics",
-    "text": "More Markdwon Basics\n\n# top level header\n\ntop level header\n\n\n## lower level header\n\nlower level header"
-  },
-  {
-    "objectID": "info/markdown/index.html#useful-html-in-markdown",
-    "href": "info/markdown/index.html#useful-html-in-markdown",
-    "title": "Markdown formatting",
-    "section": "Useful HTML in Markdown",
-    "text": "Useful HTML in Markdown\n&lt;br&gt; = line break\n\n&lt;details&gt;&lt;summary&gt;summary text&lt;/summary&gt;\n\ncollapsable content\n\n&lt;/details&gt;\n\n\n\nsummary text\n\ncollapsable content"
-  },
-  {
-    "objectID": "info/markdown/index.html#code-blocks",
-    "href": "info/markdown/index.html#code-blocks",
-    "title": "Markdown formatting",
-    "section": "Code Blocks",
-    "text": "Code Blocks\nIt’s possible to do code blocks with langauge highlighting.\nThis:\n\\`\\`\\`{.python}\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\n\\`\\`\\`\nResults in:\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\nMany, many languages are supported and can be highlighted.\nImages:\n![alt text](https://quarto.org/quarto.png)\n\n\n\nalt text\n\n\nOf course, this is an external image. You an also store images in the repository, and then refer to them by the relative file path. Something like:\n![](../image.png)\nWhere .. goes up one directory, and then you can refer to files by their file path.\nMore information about markdown: https://quarto.org/docs/authoring/markdown-basics.html"
-  },
-  {
     "objectID": "info/qmd/index.html",
     "href": "info/qmd/index.html",
     "title": ".qmd and python jupyter blocks",
@@ -56,11 +7,39 @@
     "text": "What are qmd files?\n.qmd files are files special to quarto. The short version of it is that quarto renders these files, which are essentially markdown files, to jupyter notebooks, where it then executes and renders any python code.\n\n\nExamples\n\nprint(\"Hello World!\")\n\nprint(3 + 2)\n\nHello World!\n5\n\n\nQuarto is designed for data science, and this means having executable code blocks that do something. For example, Quarto can use matplotlib in python to plot things.\nWhere things get interesting is the combination of three factors:\n\nThe output of these code blocks can be done as plain text, rather than a code block, by putting #| output: asis at the beginning of the code block.\nThe plain text output by these code blocks, is done before the markdown is rendered to other formats.\nIt’s possible to hide the code blocks but not the output, by putting #| echo: false at the beginning of the code block itself\n\nWhat this means, is that python can essentially act as a formatting engine, for generating dynamic content. Even things like using.\n#| output: asis\n#| echo: false\n\ndef make_bullets(list):\n  bulletlist = f''''''\n  for i in list:\n    bulletlist = bulletlist + \"* \"\n    bulletlist = bulletlist + i\n    bulletlist = bulletlist + \"\\n\"\n  print(bulletlist)\n\nsample_list = [\n  \"Item 1\",\n  \"Item 2\",\n  \"Item 3\"\n]\n\nmake_bullets(sample_list)\nWhich renders to:\n\nItem 1\nItem 2\nItem 3\n\nIt should be noted that I am actually using two code blocks here, one which does not execute, and does not hide itself, and another which executes and hides itself.\nYou can get even more dynamic content, if you use something like python requests to pull it as you render the site. Again, it is a bit hacky since backticks would render into a code block, so here I multiply one backticks times 3 to get a string containing 3 backticks, but it does work.\n#| output: asis\n#| echo: false\n\nimport requests\nbackticks = \"`\" * 3\n\nprint(f'''\n\n{backticks}{{.nix .code-overflow-wrap filename=home.nix}}\n{requests.get('https://raw.githubusercontent.com/ErikMcClure/bad-licenses/3c26bef3028fa8470308c493af7d7eae152a19ba/overwatch').text}\n{backticks}\n\n''')\n\n\nhome.nix\n\n                     Overwatch License Revision 2\n                          (c) Author, year\n\n\nPermission is hereby granted, free of charge, for anyone to use, distribute, or\nsell the compiled binaries, source code, and documentation (the \"Software\")\nwithout attribution.\n\nPermission to modify the Software is only granted to those that have a higher\ncompetitive matchmaking rank than the copyright holder in Overwatch 2\n(Blizzard, 2022).\n\nThe Software is provided in the hope that some will find it useful, but the\nSoftware comes under NO WARRANTY, EXPRESS OR IMPLIED, and the authors of the\nSoftware are NOT LIABLE IN THE EVENT OF LOSSES, DAMAGES OR MISUSE relating to\nthe Software."
   },
   {
+    "objectID": "info/index.html",
+    "href": "info/index.html",
+    "title": "Info",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMarkdown formatting\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n.qmd and python jupyter blocks\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAbout Quarto\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "layer8/Inject -1/index.html",
+    "href": "layer8/Inject -1/index.html",
+    "title": "Inject -1",
+    "section": "",
+    "text": "Weekly Assignment -1: Blog/Website\nThis is the first inject assigned by Jeffrey. An “inject” is a technical write-up assignment.\nThis inject was pretty straightforward as it was just following a few steps. The task as mentioned in the title, is creating a website using quarto. More information regarding quarto can be found in the info directory on this website.\nI used this guide: https://moonpiedumplings.github.io/talks/self-site/\nThe instructions for making the website are as follows:\n\n\nSetup\n\nGo to github.com and create an account\n\nYour site will be located at “username.github.io”\n\n\nGo to github.com/moonpiedumplings/blog-template and select “use template”\n\nThe repo name should be “username.github.io”\n\nmake sure to select “include all branches”\n\nin the github settings, make sure “gh-pages” is selected as the deploy\n\n\nSince I don’t use github often it took me a bit to find the “gh-pages” setting. I did some research and found it was under the “Pages” tab in the repository settings.\nAfter I got everything setup, I started toying around with the quarto.yml file and markdown. Using quarto and markdown makes the process of editing a website extremely intuitive (I don’t know web development). Once I figured out the structure of the website, I set up multiple directories like Layer 8 and my resume."
+  },
+  {
+    "objectID": "layer8/index.html",
+    "href": "layer8/index.html",
+    "title": "Layer 8",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nInject 1\n\n\n\nInject\n\n\n\nSetting up AD on Server Core\n\n\n\n\n\nMay 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject 0\n\n\n\nInject\n\n\n\nAccessing Incus\n\n\n\n\n\nApr 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject -1\n\n\n\nInject\n\n\n\nDeploying Quarto\n\n\n\n\n\nApr 21, 2025\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "resume/index.html",
     "href": "resume/index.html",
     "title": "Resume",
     "section": "",
-    "text": "todo later"
+    "text": "Kevin Holub\n23308 Balmoral Ln, West Hills, CA 91307 | (323) 336-0761 | klh02496@gmail.com\n\nSKILLS\nWindows/Active Directory · PowerShell · Networking · PC Building · Customer Service · Communication · Troubleshooting · Documentation · Adaptable\n\n\nEDUCATION\nCalifornia State University, Northridge — B.S. in Computer Information Technology (In Progress, GPA: 3.72)\nAug 2023 – Present\n- Created VLANs and server rack setup\n- Built ADDS and installed Linux clients with file sharing between Windows/Linux using SAMBA\n- Installed ESXi and managed virtual machines on ESXi\nLos Angeles Center for Enriched Studies — High School Diploma with High Honors, 2023\n\n\nCERTIFICATIONS\n\nCompTIA A+\n\n\n\nLEADERSHIP & PROJECTS\nLayer 8 Cybersecurity Club — Board Secretary, Windows Team Lead\n- Competed in 2024 Hivestorm: Hardened Windows OS image\n- WRCCDC Invitationals/Regionals 2024–2025: Secured AD and Windows services\n- Automating Active Directory tasks such as group policy implementation and password shuffling using PowerShell\nHome Lab\n- VMware Workstation Pro with Active Directory, DNS, DHCP, and file sharing\nCSUN New Student Orientation — NSO Leader\n- Helped with graduation ceremonies and assisted with touring incoming freshmen\n\n\nWORK EXPERIENCE\nRalphs — Online Pickup, Courtesy Clerk, Gas Station Cashier\nJuly 2024 – Nov 2024\n- Fulfilled online orders and assisted customers during peak hours\n- Operated gas station and grocery support duties\nLos Angeles Center for Enriched Studies — Teacher’s Assistant\nAug 2022 – June 2023\n- Supported classroom assignments and peer tutoring\nAMC Theaters, Topanga — Crew Member\nJune 2022 – Aug 2022\n- Processed orders, cleaned theaters, operated registers\n\n\nOTHER\n· Member of Alpha Lambda Delta Honor Society\n· Member of National Society of Collegiate Scholars"
   },
   {
     "objectID": "layer8/Inject 1/index.html",
@@ -112,38 +91,59 @@
     "text": "Documentation auto-generated by the website regarding how it’s built."
   },
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "layer8/index.html",
-    "href": "layer8/index.html",
-    "title": "Layer 8",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nInject 1\n\n\n\nInject\n\n\n\nSetting up AD on Server Core\n\n\n\n\n\nMay 2, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject 0\n\n\n\nInject\n\n\n\nAccessing Incus\n\n\n\n\n\nApr 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInject -1\n\n\n\nInject\n\n\n\nDeploying Quarto\n\n\n\n\n\nApr 21, 2025\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "layer8/Inject -1/index.html",
-    "href": "layer8/Inject -1/index.html",
-    "title": "Inject -1",
-    "section": "",
-    "text": "Weekly Assignment -1: Blog/Website\nThis is the first inject assigned by Jeffrey. An “inject” is a technical write-up assignment.\nThis inject was pretty straightforward as it was just following a few steps. The task as mentioned in the title, is creating a website using quarto. More information regarding quarto can be found in the info directory on this website.\nI used this guide: https://moonpiedumplings.github.io/talks/self-site/\nThe instructions for making the website are as follows:\n\n\nSetup\n\nGo to github.com and create an account\n\nYour site will be located at “username.github.io”\n\n\nGo to github.com/moonpiedumplings/blog-template and select “use template”\n\nThe repo name should be “username.github.io”\n\nmake sure to select “include all branches”\n\nin the github settings, make sure “gh-pages” is selected as the deploy\n\n\nSince I don’t use github often it took me a bit to find the “gh-pages” setting. I did some research and found it was under the “Pages” tab in the repository settings.\nAfter I got everything setup, I started toying around with the quarto.yml file and markdown. Using quarto and markdown makes the process of editing a website extremely intuitive (I don’t know web development). Once I figured out the structure of the website, I set up multiple directories like Layer 8 and my resume."
-  },
-  {
-    "objectID": "info/index.html",
-    "href": "info/index.html",
-    "title": "Info",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMarkdown formatting\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n.qmd and python jupyter blocks\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAbout Quarto\n\n\n\ninfo\n\n\n\ndescription\n\n\n\n\n\nFeb 20, 2024\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "info/quarto/index.html",
     "href": "info/quarto/index.html",
     "title": "About Quarto",
     "section": "",
     "text": "Quarto is the static site generator used to render this site.\nIt’s documentation is very extensive, and worth reading.\nInteresting/Important bits:\nQuarto has a built in category system\nThis enables users to filter documents by types.\nTheming: https://quarto.org/docs/output-formats/html-themes.html\nAt the top right of this page, there is a toggle between light and dark theme. You can edit the _quarto.yml file to edit the themes used.\nPlugins/Extensions: https://quarto.org/docs/extensions/\nPlugins add functionality to quarto, like being able to embed QR Codes.\nWeb based slides: https://quarto.org/docs/presentations/revealjs/\nI used Reveal JS slides for the presentation\nUnder the hood, Quarto uses Pandoc and supports all of it’s features."
+  },
+  {
+    "objectID": "info/markdown/index.html",
+    "href": "info/markdown/index.html",
+    "title": "Markdown formatting",
+    "section": "",
+    "text": "Markdown is very simple, and many sites, like Reddit, Stackoverflow, or even Discord use some variation of markdown formatting.\nBelow is the Markdown from the presentation, copied and pasted here."
+  },
+  {
+    "objectID": "info/markdown/index.html#markdown",
+    "href": "info/markdown/index.html#markdown",
+    "title": "Markdown formatting",
+    "section": "Markdown",
+    "text": "Markdown\n\nMarkdown is markup language\nEnables users to render formatted documents from plaintext\nMost static site generators use markdown"
+  },
+  {
+    "objectID": "info/markdown/index.html#markdown-code-snippets",
+    "href": "info/markdown/index.html#markdown-code-snippets",
+    "title": "Markdown formatting",
+    "section": "Markdown Code Snippets",
+    "text": "Markdown Code Snippets\n\n`this is code snippets`\n\nThey result in unformated, monospace text:\n\nthis is code snippets"
+  },
+  {
+    "objectID": "info/markdown/index.html#markdown-basics",
+    "href": "info/markdown/index.html#markdown-basics",
+    "title": "Markdown formatting",
+    "section": "Markdown Basics",
+    "text": "Markdown Basics\n*italics* = italics\n**bold** = bold\n[linktext](example.com) = linktext"
+  },
+  {
+    "objectID": "info/markdown/index.html#more-markdwon-basics",
+    "href": "info/markdown/index.html#more-markdwon-basics",
+    "title": "Markdown formatting",
+    "section": "More Markdwon Basics",
+    "text": "More Markdwon Basics\n\n# top level header\n\ntop level header\n\n\n## lower level header\n\nlower level header"
+  },
+  {
+    "objectID": "info/markdown/index.html#useful-html-in-markdown",
+    "href": "info/markdown/index.html#useful-html-in-markdown",
+    "title": "Markdown formatting",
+    "section": "Useful HTML in Markdown",
+    "text": "Useful HTML in Markdown\n&lt;br&gt; = line break\n\n&lt;details&gt;&lt;summary&gt;summary text&lt;/summary&gt;\n\ncollapsable content\n\n&lt;/details&gt;\n\n\n\nsummary text\n\ncollapsable content"
+  },
+  {
+    "objectID": "info/markdown/index.html#code-blocks",
+    "href": "info/markdown/index.html#code-blocks",
+    "title": "Markdown formatting",
+    "section": "Code Blocks",
+    "text": "Code Blocks\nIt’s possible to do code blocks with langauge highlighting.\nThis:\n\\`\\`\\`{.python}\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\n\\`\\`\\`\nResults in:\nprint(\"hellow world!\")\n\ndef testfunction(input):\n    print(\"Hi!\")\nMany, many languages are supported and can be highlighted.\nImages:\n![alt text](https://quarto.org/quarto.png)\n\n\n\nalt text\n\n\nOf course, this is an external image. You an also store images in the repository, and then refer to them by the relative file path. Something like:\n![](../image.png)\nWhere .. goes up one directory, and then you can refer to files by their file path.\nMore information about markdown: https://quarto.org/docs/authoring/markdown-basics.html"
   }
 ]

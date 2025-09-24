@@ -1,5 +1,13 @@
 [
   {
+    "listing": "/info/index.html",
+    "items": [
+      "/info/markdown/index.html",
+      "/info/qmd/index.html",
+      "/info/quarto/index.html"
+    ]
+  },
+  {
     "listing": "/blog/index.html",
     "items": []
   },
@@ -9,14 +17,6 @@
       "/layer8/Inject 1/index.html",
       "/layer8/Inject 0/index.html",
       "/layer8/Inject -1/index.html"
-    ]
-  },
-  {
-    "listing": "/info/index.html",
-    "items": [
-      "/info/markdown/index.html",
-      "/info/qmd/index.html",
-      "/info/quarto/index.html"
     ]
   }
 ]
