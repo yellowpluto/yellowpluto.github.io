@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yellowpluto.github.io/info/qmd/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
+    <loc>https://yellowpluto.github.io/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.726Z</lastmod>
   </url>
   <url>
     <loc>https://yellowpluto.github.io/info/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/blog/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/layer8/Inject -1/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/layer8/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/resume/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/layer8/Inject 0/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/layer8/Inject 1/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yellowpluto.github.io/info/quarto/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
+    <lastmod>2025-11-05T01:10:41.726Z</lastmod>
   </url>
   <url>
     <loc>https://yellowpluto.github.io/info/markdown/index.html</loc>
-    <lastmod>2025-09-24T03:41:12.472Z</lastmod>
+    <lastmod>2025-11-05T01:10:41.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/layer8/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/layer8/Inject 1/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/layer8/Inject -1/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/resume/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/layer8/Inject 0/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/layer8/Inv 2/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/info/quarto/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/info/qmd/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.727Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yellowpluto.github.io/blog/index.html</loc>
+    <lastmod>2025-11-05T01:10:41.726Z</lastmod>
   </url>
 </urlset>
